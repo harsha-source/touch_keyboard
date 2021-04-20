@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">    
+  <style type="text/css">
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to left, #ff4e50, #f9d423);
+  }
+  form {
+    margin: 10%;
+  }
+  label {
+    margin-right: 1em;
+  }
+  input {
+    display: block;
+    font-size: 2em;
+    margin: .1em 0 1em;
+    border: none;
+  }
+  .bottom {
+    margin-top: 50vh;
+  }
+  </style>
+</head>
+<body>
+  <form>
+    <label>Name:</label>
+    <input type="text" />
+
+    <label>Number:</label>
+    <input type="number" />
+
+    <label>Theme:</label>
+    <select id="theme">
+      <option>Default</option>
+      <option>Dark</option>
+      <option>Outline</option>
+      <option>Lightweight</option>
+      <option>QWERTY</option>
+    </select>
+    <input class="bottom" type="text" />
+  </form>
+  <script>
+    var themes = [
+      { 
+        // Default
+      },      
+      {
+        // Dark
+        style: {
+          keyboard: {
+            background: '#111',
+          },
+          key: {
+            background: '#333',
+            color: '#ddd',
+            fontSize: '.35em',
+            fontWeight: 300,
+            textShadow: '0 -1px 0 #000',
+          },
+        },
+      },
+      {
+        // Outline
+        style: {
+          keyboard: {
+            background: '#fff',
+            color: '#555',
+          },
+          key: {
+            background: 'none',
+            border: '1px solid #888',
+          },
+        }
+      },
+      {
+        // Lightweight
+        style: {
+          keyboard: {
+            background: '#eceff1',
+            color: '#32424a',
+          },
+          key: {
+            background: 'none',
+          },
+          keys: {
+            space: {
+              background: '#d1d6d9',        
+              height: '.5em',
+            },
+          },
+        },
+      },
+      {
+        // QWERTY
+        layout: {
+          abc: [
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'backspace'],
+            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter'],
+            ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '!', '?', 'shift'],
+            ['num', '/', 'space', '.'],
+          ],
+        },
+      },
+    ];
+
+    theme.onchange = function() {
+      window.touchKeyboard = themes[theme.selectedIndex];
+      console.log(touchKeyboard)
+    }   
+  </script>
+</body>
+</html>
